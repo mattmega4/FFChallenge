@@ -7,17 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2937CF541EF48C320037C4FD /* LandingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2937CF531EF48C320037C4FD /* LandingViewController.swift */; };
+		2937CF571EF48D8C0037C4FD /* EstablishmentCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2937CF561EF48D8C0037C4FD /* EstablishmentCollectionViewCell.swift */; };
 		29EC23371EF47C020047A861 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29EC23361EF47C020047A861 /* AppDelegate.swift */; };
-		29EC23391EF47C020047A861 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29EC23381EF47C020047A861 /* ViewController.swift */; };
 		29EC233C1EF47C020047A861 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 29EC233A1EF47C020047A861 /* Main.storyboard */; };
 		29EC233E1EF47C020047A861 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 29EC233D1EF47C020047A861 /* Assets.xcassets */; };
 		29EC23411EF47C020047A861 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 29EC233F1EF47C020047A861 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2937CF531EF48C320037C4FD /* LandingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LandingViewController.swift; sourceTree = "<group>"; };
+		2937CF561EF48D8C0037C4FD /* EstablishmentCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EstablishmentCollectionViewCell.swift; sourceTree = "<group>"; };
 		29EC23331EF47C020047A861 /* FFChallenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FFChallenge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		29EC23361EF47C020047A861 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		29EC23381EF47C020047A861 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		29EC233B1EF47C020047A861 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		29EC233D1EF47C020047A861 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		29EC23401EF47C020047A861 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -35,6 +37,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2937CF551EF48D680037C4FD /* Custom Cell */ = {
+			isa = PBXGroup;
+			children = (
+				2937CF561EF48D8C0037C4FD /* EstablishmentCollectionViewCell.swift */,
+			);
+			name = "Custom Cell";
+			sourceTree = "<group>";
+		};
 		29EC232A1EF47C020047A861 = {
 			isa = PBXGroup;
 			children = (
@@ -54,14 +64,39 @@
 		29EC23351EF47C020047A861 /* FFChallenge */ = {
 			isa = PBXGroup;
 			children = (
+				29EC234A1EF47C820047A861 /* View */,
+				29EC23481EF47C670047A861 /* Controller */,
+				29EC23491EF47C710047A861 /* Additional Files */,
+			);
+			path = FFChallenge;
+			sourceTree = "<group>";
+		};
+		29EC23481EF47C670047A861 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				2937CF531EF48C320037C4FD /* LandingViewController.swift */,
+				2937CF551EF48D680037C4FD /* Custom Cell */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		29EC23491EF47C710047A861 /* Additional Files */ = {
+			isa = PBXGroup;
+			children = (
 				29EC23361EF47C020047A861 /* AppDelegate.swift */,
-				29EC23381EF47C020047A861 /* ViewController.swift */,
-				29EC233A1EF47C020047A861 /* Main.storyboard */,
 				29EC233D1EF47C020047A861 /* Assets.xcassets */,
 				29EC233F1EF47C020047A861 /* LaunchScreen.storyboard */,
 				29EC23421EF47C020047A861 /* Info.plist */,
 			);
-			path = FFChallenge;
+			name = "Additional Files";
+			sourceTree = "<group>";
+		};
+		29EC234A1EF47C820047A861 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				29EC233A1EF47C020047A861 /* Main.storyboard */,
+			);
+			name = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,8 +172,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				29EC23391EF47C020047A861 /* ViewController.swift in Sources */,
+				2937CF541EF48C320037C4FD /* LandingViewController.swift in Sources */,
 				29EC23371EF47C020047A861 /* AppDelegate.swift in Sources */,
+				2937CF571EF48D8C0037C4FD /* EstablishmentCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -263,6 +299,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = K8YZSQZRNW;
 				INFOPLIST_FILE = FFChallenge/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.matthewhsingleton.FFChallenge;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -276,6 +313,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = K8YZSQZRNW;
 				INFOPLIST_FILE = FFChallenge/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.matthewhsingleton.FFChallenge;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -302,6 +340,7 @@
 				29EC23471EF47C020047A861 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
