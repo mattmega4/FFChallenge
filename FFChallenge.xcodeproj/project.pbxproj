@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		2937CF541EF48C320037C4FD /* LandingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2937CF531EF48C320037C4FD /* LandingViewController.swift */; };
 		2937CF571EF48D8C0037C4FD /* EstablishmentCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2937CF561EF48D8C0037C4FD /* EstablishmentCollectionViewCell.swift */; };
+		2937CF591EF49B080037C4FD /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2937CF581EF49B080037C4FD /* DetailViewController.swift */; };
+		2987C05A1EF4B16000590B5D /* Venue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2987C0591EF4B16000590B5D /* Venue.swift */; };
+		2987C05C1EF4C2CD00590B5D /* NetworkUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2987C05B1EF4C2CD00590B5D /* NetworkUtility.swift */; };
 		29EC23371EF47C020047A861 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29EC23361EF47C020047A861 /* AppDelegate.swift */; };
 		29EC233C1EF47C020047A861 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 29EC233A1EF47C020047A861 /* Main.storyboard */; };
 		29EC233E1EF47C020047A861 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 29EC233D1EF47C020047A861 /* Assets.xcassets */; };
@@ -18,6 +21,9 @@
 /* Begin PBXFileReference section */
 		2937CF531EF48C320037C4FD /* LandingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LandingViewController.swift; sourceTree = "<group>"; };
 		2937CF561EF48D8C0037C4FD /* EstablishmentCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EstablishmentCollectionViewCell.swift; sourceTree = "<group>"; };
+		2937CF581EF49B080037C4FD /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		2987C0591EF4B16000590B5D /* Venue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Venue.swift; sourceTree = "<group>"; };
+		2987C05B1EF4C2CD00590B5D /* NetworkUtility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkUtility.swift; sourceTree = "<group>"; };
 		29EC23331EF47C020047A861 /* FFChallenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FFChallenge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		29EC23361EF47C020047A861 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		29EC233B1EF47C020047A861 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -45,6 +51,15 @@
 			name = "Custom Cell";
 			sourceTree = "<group>";
 		};
+		2987C05D1EF4CD8200590B5D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				2987C05B1EF4C2CD00590B5D /* NetworkUtility.swift */,
+				2987C0591EF4B16000590B5D /* Venue.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
 		29EC232A1EF47C020047A861 = {
 			isa = PBXGroup;
 			children = (
@@ -64,6 +79,7 @@
 		29EC23351EF47C020047A861 /* FFChallenge */ = {
 			isa = PBXGroup;
 			children = (
+				2987C05D1EF4CD8200590B5D /* Model */,
 				29EC234A1EF47C820047A861 /* View */,
 				29EC23481EF47C670047A861 /* Controller */,
 				29EC23491EF47C710047A861 /* Additional Files */,
@@ -75,6 +91,7 @@
 			isa = PBXGroup;
 			children = (
 				2937CF531EF48C320037C4FD /* LandingViewController.swift */,
+				2937CF581EF49B080037C4FD /* DetailViewController.swift */,
 				2937CF551EF48D680037C4FD /* Custom Cell */,
 			);
 			name = Controller;
@@ -173,8 +190,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				2937CF541EF48C320037C4FD /* LandingViewController.swift in Sources */,
+				2987C05C1EF4C2CD00590B5D /* NetworkUtility.swift in Sources */,
+				2987C05A1EF4B16000590B5D /* Venue.swift in Sources */,
 				29EC23371EF47C020047A861 /* AppDelegate.swift in Sources */,
 				2937CF571EF48D8C0037C4FD /* EstablishmentCollectionViewCell.swift in Sources */,
+				2937CF591EF49B080037C4FD /* DetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

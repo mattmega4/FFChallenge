@@ -17,10 +17,15 @@ class LandingViewController: UIViewController {
     let margin: CGFloat = 10
     let cellsPerC = 3
     
+    var venues = [Venue]()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.collectionView.delegate = self
+        self.collectionView.dataSource = self
+        loadData()
         setNavBar()
         collectionView.backgroundColor = UIColor.init(red: 5.0/255.0,
                                                       green: 153.0/255.0,
@@ -42,23 +47,55 @@ class LandingViewController: UIViewController {
                                                                                                size: 18)!]
     }
     
-    
-    
+    func loadData() {
+        NetworkUtility.shared.downloadVenues { (venues, error) in
+            if let theVenues = venues {
+                self.venues = theVenues
+                self.collectionView.reloadData()
+            }
+        }
+    }
     
     
 }
 
 
-//extension LandingViewController: UICollectionViewDelegate, UICollectionViewDataSource {
-
-//func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-//    let flowLayout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
-//    let marginsAndInsets = flowLayout.sectionInset.left + flowLayout.sectionInset.right + flowLayout.minimumInteritemSpacing * CGFloat(cellsPerC - 1)
-//    let itemWidth = ((collectionView.bounds.size.width - marginsAndInsets) / CGFloat(cellsPerC)).rounded(.down)
-//    return CGSize(width: itemWidth, height: itemWidth)
-//}
-
-//}
+extension LandingViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+    
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return venues.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! EstablishmentCollectionViewCell
+        let venue = venues[indexPath.row]
+        cell.nameLabel.text = venue.name
+        NetworkUtility.shared.getImageForVenue(venue: venue) { (image) in
+            cell.imgView.image = image
+        }
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let flowLayout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
+        let marginsAndInsets = flowLayout.sectionInset.left + flowLayout.sectionInset.right + flowLayout.minimumInteritemSpacing * CGFloat(cellsPerC - 1)
+        let itemWidth = ((collectionView.bounds.size.width - marginsAndInsets) / CGFloat(cellsPerC)).rounded(.down)
+        return CGSize(width: itemWidth, height: itemWidth)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let venue = venues[indexPath.row]
+        
+        if let detailVC = storyboard?.instantiateViewController(withIdentifier: "detailVC") as? DetailViewController {
+            detailVC.venue = venue
+            navigationController?.pushViewController(detailVC, animated: true)
+        }
+    }
+}
 
 
 
