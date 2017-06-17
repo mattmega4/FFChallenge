@@ -13,33 +13,21 @@ class Venue: NSObject {
     var id: String?
     var hours: String?
     var imageURL: URL?
+    var venueDescription: String?
     var name: String?
-    var rating: Int = 0
     var isPopular = false
     var isNew = false
-    var venueDescription: String?
+    var rating: Int = 0
     var reviews: Int = 0
     var isOpen = false
+    var price: Int = 0
+    
     
     init(object: [String : Any]) {
+        
+        
         id = object["id"] as? String
-        if let imageURLString = object["url"] as? String {
-            imageURL = URL(string: imageURLString)
-        }
-        venueDescription = object["description"] as? String
-        if let theRating = object["rating"] as? Int {
-            rating = theRating
-        }
-        name = object["title"] as? String
-        if let popular = object["popular"] as? Bool {
-            isPopular = popular
-        }
-        if let new = object["new"] as? Bool {
-            isNew = new
-        }
-        if let nReviews = object["n_reviews"] as? Int {
-            reviews = nReviews
-        }
+        
         hours = object["hours"] as? String
         
         let date = Date()
@@ -48,7 +36,6 @@ class Venue: NSObject {
         let minutes = calendar.component(.minute, from: date)
         if let theHours = hours {
             let tmp = theHours.characters.split(separator: " ").map(String.init)
-            // ["Daily,", "5:00", "a.m.", "to", "10:10", "p.m."]
             if tmp.count == 6 {
                 let openTimeString = tmp[1]
                 let closeTimeString = tmp[4]
@@ -82,5 +69,34 @@ class Venue: NSObject {
                 }
             }
         }
+        
+        if let imageURLString = object["url"] as? String {
+            imageURL = URL(string: imageURLString)
+        }
+        
+        venueDescription = object["description"] as? String
+        
+        name = object["title"] as? String
+        
+        if let popular = object["popular"] as? Bool {
+            isPopular = popular
+        }
+        
+        if let new = object["new"] as? Bool {
+            isNew = new
+        }
+        
+        if let theRating = object["rating"] as? Int {
+            rating = theRating
+        }
+        
+        if let nReviews = object["n_reviews"] as? Int {
+            reviews = nReviews
+        }
+        
+        if let thePrice = object["price_range"] as? Int {
+            price = thePrice
+        }
+        
     }
 }
