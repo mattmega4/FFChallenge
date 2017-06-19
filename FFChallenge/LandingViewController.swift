@@ -14,38 +14,35 @@ class LandingViewController: UIViewController {
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var collectionView: UICollectionView!
     
-    let margin: CGFloat = 10
-    let cellsPerC = 3
+    let margin: CGFloat = 20
+    let cellsPerC = 2
     
     var venues = [Venue]()
     
+    var searchActive : Bool = false
+    var filtered: [Venue] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.searchBar.delegate = self
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
         loadData()
         setNavBar()
+        title = "FetchyFox Challenge"
+        
+        
+        
+        
         collectionView.backgroundColor = UIColor.init(red: 5.0/255.0,
                                                       green: 153.0/255.0,
                                                       blue: 146.0/255.0,
                                                       alpha: 0.1)
     }
     
-    func setNavBar() {
-        title = "FetchyFox Challenge"
-        self.navigationController?.isNavigationBarHidden = false
-        navigationController?.navigationBar.barTintColor = UIColor(red: 230.0/255.0,
-                                                                   green: 114.0/255.0,
-                                                                   blue: 53.0/255.0,
-                                                                   alpha: 1.0)
-        UINavigationBar.appearance().tintColor = .white
-        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName : UIColor.white]
-        navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white,
-                                                                   NSFontAttributeName: UIFont(name: "Helvetica-Bold",
-                                                                                               size: 18)!]
-    }
+    
+    // MARK: - Load Venues
     
     func loadData() {
         NetworkUtility.shared.downloadVenues { (venues, error) in
@@ -56,11 +53,12 @@ class LandingViewController: UIViewController {
         }
     }
     
-    
-}
+} // End of LandingViewController
 
 
-extension LandingViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+// MARK: - CollectionView Delegate & DataSource & FlowLayout Methods
+
+extension LandingViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
@@ -71,6 +69,7 @@ extension LandingViewController: UICollectionViewDelegate, UICollectionViewDataS
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! EstablishmentCollectionViewCell
         let venue = venues[indexPath.row]
         cell.nameLabel.text = venue.name
@@ -78,13 +77,6 @@ extension LandingViewController: UICollectionViewDelegate, UICollectionViewDataS
             cell.imgView.image = image
         }
         return cell
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let flowLayout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
-        let marginsAndInsets = flowLayout.sectionInset.left + flowLayout.sectionInset.right + flowLayout.minimumInteritemSpacing * CGFloat(cellsPerC - 1)
-        let itemWidth = ((collectionView.bounds.size.width - marginsAndInsets) / CGFloat(cellsPerC)).rounded(.down)
-        return CGSize(width: itemWidth, height: itemWidth)
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -95,6 +87,48 @@ extension LandingViewController: UICollectionViewDelegate, UICollectionViewDataS
             navigationController?.pushViewController(detailVC, animated: true)
         }
     }
+    
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        collectionView?.collectionViewLayout.invalidateLayout()
+        super.viewWillTransition(to: size, with: coordinator)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let flowLayout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
+        let marginsAndInsets = flowLayout.sectionInset.left + flowLayout.sectionInset.right + flowLayout.minimumInteritemSpacing * CGFloat(cellsPerC - 1)
+        let itemWidth = ((collectionView.bounds.size.width - marginsAndInsets) / CGFloat(cellsPerC)).rounded(.down)
+        return CGSize(width: itemWidth, height: itemWidth)
+    }
+    
+}
+
+
+// MARK: - UISearch Bar UISearchBarDelegate & UISearchDisplayDelegate
+
+extension LandingViewController: UISearchBarDelegate, UISearchDisplayDelegate {
+    
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        searchActive = true;
+    }
+    
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        searchActive = false;
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchActive = false;
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchActive = false;
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        //
+    }
+    
+    
+    
 }
 
 
