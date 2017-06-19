@@ -11,34 +11,23 @@ import UIKit
 
 class LandingViewController: UIViewController {
     
-    @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var collectionView: UICollectionView!
     
-    let margin: CGFloat = 20
+    let margin: CGFloat = 10
     let cellsPerC = 2
     
     var venues = [Venue]()
     
-    var searchActive : Bool = false
-    var filtered: [Venue] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.searchBar.delegate = self
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
         loadData()
         setNavBar()
         title = "FetchyFox Challenge"
         
-        
-        
-        
-        collectionView.backgroundColor = UIColor.init(red: 5.0/255.0,
-                                                      green: 153.0/255.0,
-                                                      blue: 146.0/255.0,
-                                                      alpha: 0.1)
     }
     
     
@@ -71,11 +60,14 @@ extension LandingViewController: UICollectionViewDelegate, UICollectionViewDataS
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! EstablishmentCollectionViewCell
+        
+        
         let venue = venues[indexPath.row]
         cell.nameLabel.text = venue.name
         NetworkUtility.shared.getImageForVenue(venue: venue) { (image) in
             cell.imgView.image = image
         }
+        
         return cell
     }
     
@@ -101,36 +93,3 @@ extension LandingViewController: UICollectionViewDelegate, UICollectionViewDataS
     }
     
 }
-
-
-// MARK: - UISearch Bar UISearchBarDelegate & UISearchDisplayDelegate
-
-extension LandingViewController: UISearchBarDelegate, UISearchDisplayDelegate {
-    
-    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-        searchActive = true;
-    }
-    
-    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
-        searchActive = false;
-    }
-    
-    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        searchActive = false;
-    }
-    
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        searchActive = false;
-    }
-    
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        //
-    }
-    
-    
-    
-}
-
-
-
-

@@ -11,7 +11,6 @@
 		2937CF571EF48D8C0037C4FD /* EstablishmentCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2937CF561EF48D8C0037C4FD /* EstablishmentCollectionViewCell.swift */; };
 		2937CF591EF49B080037C4FD /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2937CF581EF49B080037C4FD /* DetailViewController.swift */; };
 		296626381EF7B8FD0098C129 /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 296626371EF7B8FD0098C129 /* UIViewController+Extensions.swift */; };
-		2966263A1EF7BA7C0098C129 /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 296626391EF7BA7C0098C129 /* UIView+Extensions.swift */; };
 		2987C05A1EF4B16000590B5D /* Venue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2987C0591EF4B16000590B5D /* Venue.swift */; };
 		2987C05C1EF4C2CD00590B5D /* NetworkUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2987C05B1EF4C2CD00590B5D /* NetworkUtility.swift */; };
 		29EC23371EF47C020047A861 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29EC23361EF47C020047A861 /* AppDelegate.swift */; };
@@ -25,7 +24,6 @@
 		2937CF561EF48D8C0037C4FD /* EstablishmentCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EstablishmentCollectionViewCell.swift; sourceTree = "<group>"; };
 		2937CF581EF49B080037C4FD /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		296626371EF7B8FD0098C129 /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
-		296626391EF7BA7C0098C129 /* UIView+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
 		2987C0591EF4B16000590B5D /* Venue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Venue.swift; sourceTree = "<group>"; };
 		2987C05B1EF4C2CD00590B5D /* NetworkUtility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkUtility.swift; sourceTree = "<group>"; };
 		29EC23331EF47C020047A861 /* FFChallenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FFChallenge.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -59,7 +57,6 @@
 			isa = PBXGroup;
 			children = (
 				296626371EF7B8FD0098C129 /* UIViewController+Extensions.swift */,
-				296626391EF7BA7C0098C129 /* UIView+Extensions.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -209,7 +206,6 @@
 				296626381EF7B8FD0098C129 /* UIViewController+Extensions.swift in Sources */,
 				29EC23371EF47C020047A861 /* AppDelegate.swift in Sources */,
 				2937CF571EF48D8C0037C4FD /* EstablishmentCollectionViewCell.swift in Sources */,
-				2966263A1EF7BA7C0098C129 /* UIView+Extensions.swift in Sources */,
 				2937CF591EF49B080037C4FD /* DetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

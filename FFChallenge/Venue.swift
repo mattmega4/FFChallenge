@@ -25,7 +25,6 @@ class Venue: NSObject {
     
     init(object: [String : Any]) {
         
-        
         id = object["id"] as? String
         
         hours = object["hours"] as? String
@@ -34,6 +33,7 @@ class Venue: NSObject {
         let calendar = Calendar.current
         let hour = calendar.component(.hour, from: date)
         let minutes = calendar.component(.minute, from: date)
+        
         if let theHours = hours {
             let tmp = theHours.characters.split(separator: " ").map(String.init)
             if tmp.count == 6 {
@@ -43,7 +43,9 @@ class Venue: NSObject {
                 let closeTimeAbv = tmp[5]
                 
                 let openTimeArray = openTimeString.characters.split(separator: ":").map(String.init)
+                
                 let closeTimeArray = closeTimeString.characters.split(separator: ":").map(String.init)
+                
                 if openTimeArray.count == 2 && closeTimeArray.count == 2 {
                     if var openHour = Int(openTimeArray[0]), var closeHour = Int(closeTimeArray[0]), let openMinute = Int(openTimeArray[1]), let closeMinute = Int(closeTimeArray[1]) {
                         if openTimeAbv == "p.m." && openHour < 12 {
