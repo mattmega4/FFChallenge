@@ -11,6 +11,7 @@
     <customFonts key="customFonts">
         <array key="GillSans.ttc">
             <string>GillSans</string>
+            <string>GillSans-Bold</string>
         </array>
     </customFonts>
     <scenes>
@@ -27,7 +28,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="LWM-fB-Ej9">
-                                <rect key="frame" x="0.0" y="74" width="375" height="583"/>
+                                <rect key="frame" x="0.0" y="118" width="375" height="539"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="rhA-gg-9jI">
                                     <size key="itemSize" width="165" height="165"/>
@@ -73,18 +74,29 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="NnU-0W-m1w">
+                                <rect key="frame" x="0.0" y="64" width="375" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="we8-AT-6V8"/>
+                                </constraints>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="LWM-fB-Ej9" secondAttribute="bottom" constant="10" id="7nT-FO-ct7"/>
-                            <constraint firstItem="LWM-fB-Ej9" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="10" id="ZxX-Bq-MB4"/>
+                            <constraint firstItem="NnU-0W-m1w" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="B0v-x3-Urw"/>
+                            <constraint firstItem="LWM-fB-Ej9" firstAttribute="top" secondItem="NnU-0W-m1w" secondAttribute="bottom" constant="10" id="DC0-Qf-oRh"/>
+                            <constraint firstItem="NnU-0W-m1w" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="PyZ-FJ-bkU"/>
                             <constraint firstAttribute="trailing" secondItem="LWM-fB-Ej9" secondAttribute="trailing" id="rSx-5l-2rx"/>
                             <constraint firstItem="LWM-fB-Ej9" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="um1-nj-c4q"/>
+                            <constraint firstAttribute="trailing" secondItem="NnU-0W-m1w" secondAttribute="trailing" id="vqz-13-vN8"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="7kp-xo-0GD"/>
                     <connections>
                         <outlet property="collectionView" destination="LWM-fB-Ej9" id="XKk-G0-wjn"/>
+                        <outlet property="searchBar" destination="NnU-0W-m1w" id="ChU-V2-tic"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -263,7 +275,7 @@
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="FXN-nQ-nMo">
                                 <rect key="frame" x="10" y="372.5" width="355" height="284.5"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <mutableString key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</mutableString>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>

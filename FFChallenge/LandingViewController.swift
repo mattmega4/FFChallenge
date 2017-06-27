@@ -11,17 +11,21 @@ import UIKit
 
 class LandingViewController: UIViewController {
     
+    
+    @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var collectionView: UICollectionView!
     
     let margin: CGFloat = 10
     let cellsPerC = 2
     
     var venues = [Venue]()
-    
+    var allVenues = [Venue]()
+    var searching = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.searchBar.delegate = self
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
         loadData()
@@ -37,6 +41,7 @@ class LandingViewController: UIViewController {
         NetworkUtility.shared.downloadVenues { (venues, error) in
             if let theVenues = venues {
                 self.venues = theVenues
+                self.allVenues = theVenues
                 self.collectionView.reloadData()
             }
         }
@@ -61,11 +66,12 @@ extension LandingViewController: UICollectionViewDelegate, UICollectionViewDataS
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! EstablishmentCollectionViewCell
         
-        
-        let venue = venues[indexPath.row]
-        cell.nameLabel.text = venue.name
-        NetworkUtility.shared.getImageForVenue(venue: venue) { (image) in
-            cell.imgView.image = image
+        if indexPath.row < venues.count {
+            let venue = venues[indexPath.row]
+            cell.nameLabel.text = venue.name
+            NetworkUtility.shared.getImageForVenue(venue: venue) { (image) in
+                cell.imgView.image = image
+            }
         }
         
         return cell
@@ -91,5 +97,36 @@ extension LandingViewController: UICollectionViewDelegate, UICollectionViewDataS
         let itemWidth = ((collectionView.bounds.size.width - marginsAndInsets) / CGFloat(cellsPerC)).rounded(.down)
         return CGSize(width: itemWidth, height: itemWidth)
     }
+    
+}
+
+
+extension LandingViewController: UISearchBarDelegate {
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchText.isEmpty {
+            venues = allVenues
+            self.collectionView.reloadData()
+            return
+        }
+        let tempVenues = allVenues.filter({ (aVenue) -> Bool in
+            if let venueName = aVenue.name {
+                if venueName.lowercased().substring(to: min(venueName.endIndex, searchText.endIndex)) == searchText.lowercased() {
+                    return true
+                }
+            }
+            if let words = aVenue.name?.components(separatedBy: .whitespaces) {
+                for aWord in words {
+                    return aWord.lowercased().substring(to: min(searchText.endIndex, aWord.endIndex)) == searchText.lowercased()
+                }
+            }
+            return false
+        })
+        venues = tempVenues
+        self.collectionView.reloadData()
+        
+    }
+    
+    
     
 }
