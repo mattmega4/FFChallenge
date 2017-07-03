@@ -44,7 +44,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="165" height="165"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="redraw" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gvL-s8-EAT">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gvL-s8-EAT">
                                                     <rect key="frame" x="21" y="0.0" width="124" height="124"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="gvL-s8-EAT" secondAttribute="height" multiplier="1:1" id="aBY-Yu-QjD"/>
